@@ -1,5 +1,5 @@
 import flet as ft
-from game_logic import Player,  combat, visit_city, return_to_main_menu, add_text
+from game_logic import Player,  combat, visit_city, return_to_main_menu, add_text, equipment
 
 def main(page: ft.Page):
     page.title = "LegendOfYss"
@@ -21,12 +21,10 @@ def main(page: ft.Page):
     # Główne menu
     def show_main_menu():
         menu_container.content = ft.Column([
-            ft.ElevatedButton("Eksploruj", width=120, height=40, 
-                              on_click=lambda e: combat(player, game_text, page, menu_container, show_main_menu, show_city_menu)),
-            ft.ElevatedButton("Statystyki", width=120, height=40, 
-                              on_click=lambda e: add_text(game_text, "Statystyki", page)),
-            ft.ElevatedButton("Miasto", width=120, height=40, 
-                              on_click=lambda e: visit_city(game_text, page, menu_container, show_city_menu)),
+            ft.ElevatedButton("Eksploruj", width=120, height=40, on_click=lambda e: combat(player, game_text, page, menu_container, show_main_menu, show_city_menu)),
+            ft.ElevatedButton("Statystyki", width=120, height=40, on_click=lambda e: add_text(game_text, "Statystyki", page)),
+            ft.ElevatedButton("Ekwipunek", width=120, height=40, on_click=lambda e: equipment(game_text, page, player)),
+            ft.ElevatedButton("Miasto", width=120, height=40, on_click=lambda e: visit_city(game_text, page, menu_container, show_city_menu)),
             ft.ElevatedButton("Wyjście", width=120, height=40, on_click=lambda e: page.window.destroy())
         ], spacing=10)
         page.update()
