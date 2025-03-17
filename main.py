@@ -1,12 +1,13 @@
 import flet as ft
-from game_logic import Player,  combat, visit_city, return_to_main_menu, add_text, equipment
+from game_logic import Player,  combat, visit_city, return_to_main_menu, add_text, equipment, statistics, merchant, blacksmith
+
 
 def main(page: ft.Page):
     page.title = "LegendOfYss"
     page.bgcolor = ft.colors.LIGHT_BLUE_700
 
     # Rozmiar okna
-    page.window.width = 1100
+    page.window.width = 1200
     page.window.height = 800
     page.window.resizable = True
     page.window.center()
@@ -15,31 +16,38 @@ def main(page: ft.Page):
 
     game_text = ft.Column(scroll=True, expand=True, auto_scroll=True)
 
-    # Kontener na dynamiczne menu
     menu_container = ft.Container()
 
     # Główne menu
     def show_main_menu():
         menu_container.content = ft.Column([
-            ft.ElevatedButton("Eksploruj", width=120, height=40, on_click=lambda e: combat(player, game_text, page, menu_container, show_main_menu, show_city_menu)),
-            ft.ElevatedButton("Statystyki", width=120, height=40, on_click=lambda e: add_text(game_text, "Statystyki", page)),
-            ft.ElevatedButton("Ekwipunek", width=120, height=40, on_click=lambda e: equipment(game_text, page, player)),
-            ft.ElevatedButton("Miasto", width=120, height=40, on_click=lambda e: visit_city(game_text, page, menu_container, show_city_menu)),
-            ft.ElevatedButton("Wyjście", width=120, height=40, on_click=lambda e: page.window.destroy())
+            ft.ElevatedButton("Eksploruj", width=120, height=40, 
+                            on_click=lambda e: combat(player, game_text, page, menu_container, show_main_menu, show_city_menu)),
+            ft.ElevatedButton("Statystyki", width=120, height=40, 
+                            on_click=lambda e: statistics(game_text, page, player)),
+            ft.ElevatedButton("Ekwipunek", width=120, height=40, 
+                            on_click=lambda e: equipment(game_text, page, player, menu_container, show_main_menu)),
+            ft.ElevatedButton("Miasto", width=120, height=40, 
+                            on_click=lambda e: visit_city(game_text, page, menu_container, show_city_menu)),
+            ft.ElevatedButton("Wyjście", width=120, height=40, 
+                            on_click=lambda e: page.window.destroy())
         ], spacing=10)
         page.update()
 
     # Menu w mieście
     def show_city_menu():
         menu_container.content = ft.Column([
-            ft.ElevatedButton("Kowal", width=120, height=40, on_click=lambda e: add_text(game_text, "U kowala!", page)),
-            ft.ElevatedButton("Kupiec", width=120, height=40, on_click=lambda e: add_text(game_text, "U kupca!", page)),
+            ft.ElevatedButton("Kowal", width=120, height=40, 
+                              on_click=lambda e: blacksmith(game_text, page, player, menu_container, show_city_menu)),
+            ft.ElevatedButton("Handlarz", width=120, height=40, 
+                            on_click=lambda e: merchant(game_text, page, player, menu_container, show_city_menu)),
+            ft.ElevatedButton("Statystyki", width=120, height=40, 
+                            on_click=lambda e: statistics(game_text, page, player)),
             ft.ElevatedButton("Wyjście z miasta", width=120, height=40, 
-                              on_click=lambda e: return_to_main_menu(game_text, page, menu_container, show_main_menu))
+                            on_click=lambda e: return_to_main_menu(game_text, page, menu_container, show_main_menu))
         ], spacing=10)
         page.update()
 
-    # Inicjalizacja głównego menu
     show_main_menu()
 
     game_text_box = ft.Container(
