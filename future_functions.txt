@@ -1,0 +1,45 @@
+1. Poziomy
+- Umiejętności
+
+2. Tworzenie postaci
+- Imię
+- Rasa
+- Punkty do przydzielenia
+- Profesja?
+
+3. Magia?
+
+4. Rozbudowa walki
+
+5. Historia
+
+6. Misje dodatkowe
+
+7. System reputacji i różne frakcje?
+
+8. Crafting?
+
+9. Zapisywanie i wczytywanie gry
+
+10. Obrazy
+
+11. Dźwięk
+
+12. Lokalizacje
+
+13. System zmęczenia i odpoczynku
+- Specjalne ataki kosztują wytrzymałość
+- Ucieczka z walki
+- Im dalsza lokacja tym większe zmęczenie
+- Bonusy i negatywne efekty
+- Możliwość odpoczynku w różnych miejscach
+- Eliksiry zwiększające wytrzymałość
+
+14. Encyklopedia
+
+15. System odrodzenia
+
+16. Rozbudowa bossów
+- licznik walk
+- misje
+- znalezienie framgnetów artefaktu
