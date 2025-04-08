@@ -5,8 +5,8 @@ from data.items_data import goblin_loot, fairy_loot
 def get_random_enemy(player):
     if player.current_location == "Mroczna puszcza":
         enemies = [
-            Enemy("Goblin", 21, 2, 4, 10, goblin_loot, 9),
-            Enemy("Wróżka", 15, 3, 0, 15, fairy_loot, 7),
+            Enemy("Goblin", 21, 2, 4, 10, goblin_loot, 9, 0),
+            Enemy("Wróżka", 15, 3, 0, 15, fairy_loot, 7, 0),
         ]
     elif player.current_location == "Przełęcz Shoi":
         enemies = [

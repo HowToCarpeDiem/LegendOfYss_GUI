@@ -30,7 +30,7 @@ def equipment(game_text, page, player, menu_container, show_main_menu):
                 ft.Text(f"{item.name} ({item.effect_type}: +{item.effect_value})", width=300, color=text_color)
             ])
             
-            if item.effect_type in ["health", "max_health"]:
+            if item.effect_type in ["health", "max_health", 'stamina']:
                 button_row.controls.append(
                     ft.ElevatedButton("Użyj", 
                         on_click=lambda e, i=idx: use_item(e, i, player, game_text, page, menu_container, show_main_menu))

@@ -1,0 +1,81 @@
+import matplotlib.pyplot as plt
+
+# Dane ze średnicami zastępczymi [μm]
+srednice_zastepcze = [
+   
+
+
+486 ,
+
+290 ,
+
+430 ,
+
+278 ,
+
+388 ,
+
+334 
+,
+292 ,
+
+506 ,
+
+405 ,
+
+276 ,
+
+358 ,
+
+416 ,
+
+374 ,
+
+315 ,
+
+298 ,
+
+458 ,
+
+602 ,
+
+517 ,
+
+498 ,
+
+534 ,
+
+279 ,
+
+341 ,
+
+452 ,
+
+645 ,
+
+721 ,
+
+276 ,
+
+369 ,
+
+611 ,
+
+423 ,
+
+535 
+
+
+
+
+]
+
+# Tworzenie histogramu
+plt.figure(figsize=(8, 5))
+plt.hist(srednice_zastepcze, bins=8, color='pink', edgecolor='black')
+plt.xlabel("Średnica zastępcza [μm]")
+plt.ylabel("Liczba obserwacji")
+plt.title("Histogram średnicy zastępczej porów")
+
+# Wyświetlenie wykresu
+plt.show()

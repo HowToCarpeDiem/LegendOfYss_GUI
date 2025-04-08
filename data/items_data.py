@@ -2,7 +2,7 @@ from models.item import Item
 
 # Przedmioty z łupów
 goblin_loot = [Item("Drewniana pałka", 'attack', 5, 2, 0), Item('Gulasz z Goblina', 'health', 20, 5, 0)]
-fairy_loot = [Item("Pył z skrzydeł Wróżki", 'max_health', 2, 6, 0)]
+fairy_loot = [Item("Pył z skrzydeł Wróżki", 'max_health', 2, 6, 0), Item("Mikstura Wróżki", 'stamina', 2, 10, 0)]
 
 # Lista przedmiotów u handlarza
 merchant_items = [

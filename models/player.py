@@ -13,6 +13,9 @@ class Player:
         self.inventory = []
         self.equipped_weapon = None
         self.equipped_armor = None
+        self.stamina = 5
+        self.max_stamina = 5
+        
 
         if attributes is None:
             self.strength = 8
@@ -44,11 +47,15 @@ class Player:
             self.initiative += 1
 
     def update_derived_stats(self):
-        base_health = 80
         if self.vitality > 8:
             health_bonus = (self.vitality - 8) * 10
-            self.max_health = base_health + health_bonus
+            self.max_health = 80 + health_bonus
             self.health = self.max_health
+
+        if self.strength > 8:
+            attack_bonus = (self.strength - 8) * 0.05 
+            self.attack = round(10 * (1 + attack_bonus))
+            
 
     def is_alive(self):
         return self.health > 0

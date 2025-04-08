@@ -2,9 +2,6 @@
 - Umiejętności
 
 2. Tworzenie postaci
-- Imię
-- Rasa
-- Punkty do przydzielenia
 - Profesja?
 
 3. Magia?

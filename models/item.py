@@ -3,7 +3,7 @@ import flet as ft
 class Item:
     def __init__(self, name, effect_type, effect_value, gold_value, upgrade_level):
         self.name = name
-        self.effect_type = effect_type # health, max_health, attack, armor, initiative, strength, dexterity, vitality, charisma, initiative
+        self.effect_type = effect_type # health, max_health, attack, armor, initiative, strength, dexterity, vitality, charisma, initiative, stamina
         self.effect_value = int(effect_value)
         self.gold_value = int(gold_value)
         self.upgrade_level = upgrade_level
@@ -25,6 +25,9 @@ class Item:
         elif self.effect_type == 'initiative':
             player.initiative += self.effect_value
             game_text.controls.append(ft.Text(f"Zwiększyłeś inicjatywę o {self.effect_value}"))
+        elif self.effect_type == 'stamina':
+            player.stamina += self.effect_value
+            game_text.controls.append(ft.Text(f"Przywróciłeś {self.effect_value} staminy"))
     
     def equip(self, player, game_text):
         if self.effect_type == 'attack':
