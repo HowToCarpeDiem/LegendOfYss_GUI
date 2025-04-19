@@ -1,5 +1,5 @@
 import flet as ft
-from ui.character_creation import show_name_input
+from ui.start_menu import show_start_menu
 from ui.game_screen import create_game_interface
 
 def main(page: ft.Page):
@@ -14,6 +14,6 @@ def main(page: ft.Page):
     page.window.center()
     
     # Rozpoczęcie gry od ekranu tworzenia postaci
-    show_name_input(page, create_game_interface)
+    show_start_menu(page, create_game_interface)
 
 ft.app(target=main)

@@ -30,6 +30,9 @@ class Player:
             self.charisma = attributes["charisma"]
             self.initiative = attributes["initiative"]
 
+        self.dodge_chance = 0
+        self.critical_chance = 0
+
         self.race = race
         self.apply_racial_bonuses()
 
@@ -55,6 +58,16 @@ class Player:
         if self.strength > 8:
             attack_bonus = (self.strength - 8) * 0.05 
             self.attack = round(10 * (1 + attack_bonus))
+
+        if self.dexterity > 8:
+            self.dodge_chance = (self.dexterity - 8) * 3
+        else:
+            self.dodge_chance = 0
+
+        if self.dexterity > 8:
+            self.critical_chance = (self.dexterity - 8) * 3
+        else:
+            self.critical_chance = 0
             
 
     def is_alive(self):

@@ -18,7 +18,12 @@ def combat(player, game_text, page, menu_container, show_main_menu, show_city_me
     
     # Podstawowy atak
     def player_attack(player, enemy, game_text):
+        is_critical = random.random() * 100 < player.critical_chance
+
         damage = random.randint(round(player.attack * 0.8), round(player.attack * 1.1))
+        if is_critical:
+            damage += damage * 1.5
+
         if enemy.armor > 0:
             reduced_damage = max(1, damage - enemy.armor)
             game_text.controls.append(ft.Text(f"Zadałeś {damage} obrażeń, ale pancerz przeciwnika zredukował je do {reduced_damage}!"))
@@ -30,6 +35,10 @@ def combat(player, game_text, page, menu_container, show_main_menu, show_city_me
 
     # Atak przeciwnika
     def enemy_attack(player, enemy, game_text):
+        if random.random() * 100 < player.dodge_chance:
+            game_text.controls.append(ft.Text(f"Unikasz ataku {enemy.name}", color=ft.colors.GREEN))
+            return
+        
         damage = random.randint(round(enemy.attack * 0.8), round(enemy.attack * 1.1))
         if player.armor > 0:
             reduced_damage = max(1, damage - player.armor)

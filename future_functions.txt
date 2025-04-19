@@ -1,9 +1,6 @@
 1. Poziomy
 - Umiejętności
 
-2. Tworzenie postaci
-- Profesja?
-
 3. Magia?
 
 4. Rozbudowa walki
@@ -15,8 +12,6 @@
 7. System reputacji i różne frakcje?
 
 8. Crafting?
-
-9. Zapisywanie i wczytywanie gry
 
 10. Obrazy
 

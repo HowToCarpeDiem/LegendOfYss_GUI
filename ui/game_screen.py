@@ -2,31 +2,39 @@ import flet as ft
 from models.player import Player
 from ui.menu import create_main_menu, create_city_menu
 
-def create_game_interface(page, player_name, player_race, attributes=None):
+def create_game_interface(page, player_name, player_race, attributes=None, player=None):
     page.controls.clear()
 
-    if attributes is None:
-        attributes = {
-            "strength": 0,
-            "dexterity": 0,
-            "vitality": 0,
-            "charisma": 0,
-            "initiative": 0
-        }
-
-    player = Player(player_name, player_race, attributes)
-
+    # Jeśli przekazano gotowego gracza, użyj go zamiast tworzyć nowego
+    if player is None:
+        # Tworzenie nowego gracza dla nowej gry
+        if attributes is None:
+            attributes = {
+                "strength": 0,
+                "dexterity": 0,
+                "vitality": 0,
+                "charisma": 0,
+                "initiative": 0
+            }
+        player = Player(player_name, player_race, attributes)
+    
     # Główny interfejs gry
     game_text = ft.Column(scroll=True, expand=True, auto_scroll=True)
     menu_container = ft.Container()
 
     # Dodanie powitania
-    game_text.controls.append(ft.Text(f"Witaj {player_name} w świecie Yss!", size=18))
-    game_text.controls.append(ft.Text(f"Jako {player_race} rozpoczynasz swoją przygodę...", size=16))
+    game_text.controls.append(ft.Text(f"Witaj {player.name} w świecie Yss!", size=18))
+    
+    if player is None:
+        # Wiadomość dla nowej gry
+        game_text.controls.append(ft.Text(f"Jako {player.race} rozpoczynasz swoją przygodę...", size=16))
+    else:
+        # Wiadomość dla wczytanej gry
+        game_text.controls.append(ft.Text(f"Twoja przygoda trwa dalej...", size=16))
 
     # Główne menu
     def show_main_menu():
-        create_main_menu(player, game_text, page, menu_container, show_city_menu)
+        create_main_menu(player, game_text, page, menu_container, show_city_menu, create_game_interface)
 
     # Menu w mieście
     def show_city_menu():
